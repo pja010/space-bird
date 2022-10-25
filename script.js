@@ -1,13 +1,3 @@
-// function setup() {
-//   createCanvas(windowWidth, windowHeight);
-// }
-
-// function draw() {
-//   background(240);
-//   ellipse(mouseX, mouseY, 50)
-//   console.log(mouseX)
-// }
-
 let starField;
 let starField2;
 
@@ -22,6 +12,12 @@ function draw() {
   starField2.draw();
   starField.draw();
 }
+
+
+
+
+
+
 
 /* 
 
