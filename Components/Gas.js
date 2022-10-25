@@ -6,7 +6,6 @@
 
 
 
-
 /* 
 
 globals StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
