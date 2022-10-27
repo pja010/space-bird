@@ -6,7 +6,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
-  ship = new Ship(50);
+  ship = new Ship(60, windowWidth/2-30, windowHeight-80);
 }
 
 function draw() {
