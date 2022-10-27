@@ -1,17 +1,55 @@
-class Ship {
-  constructor(width, x, y) {
-    
+class GasTank {
+  constructor() {
+    this.counter = new Count(0, 100)
   }
+  
   draw() {
-    
+    let middle = height/2;
+    let sVal = this.counter.s;
+    let Progress = map(sVal,0,100,0,width/3);
+
+    fill(0,100,100);
+    textSize(32);
+    textFont('monospace')
+    let txt = text('Gas : '+ sVal + '%',0,middle-20);
+
+    rect(0,middle,Progress,20,15)
+    stroke(0,100,100)
+    noFill();
+    rect(0,middle,width,20,15)
+
+    if (floor(random(300)) == 100) {
+      this.counter.reset();
+    }
   }
   
 }
 
+class Count{
+  constructor(s,w){
+    this.s = s
+    this.w = w
+    this.p = createP('')
+  }
+  start(){
+    if (!this.done) {
+      setInterval(() => this.counter(),this.w)
+    }
+  }
+  counter(){
+    if(this.s < 100){
+      this.s ++
+      this.p.html(this.s)
+    }
+  }
+  reset(){
+    this.s = 0
+  }
+}
 
 /* 
 
-globals StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
+globals GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
 BEVEL, BEZIER, BLEND, BLUR, BOLD, BOLDITALIC, BOTTOM, BURN, CENTER, CHORD,
 CLAMP, CLOSE, CONTROL, CORNER, CORNERS, CROSS, CURVE, DARKEST, DEGREES,
 DEG_TO_RAD, DELETE, DIFFERENCE, DILATE, DODGE, DOWN_ARROW, ENTER, ERODE,

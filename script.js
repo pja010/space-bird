@@ -2,13 +2,15 @@ let starField;
 let starField2;
 let ship;
 let gas;
+let gasTank;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
   ship = new Ship(60, windowWidth/2-30, windowHeight-80);
-  gas = new Gas(60, 0, 0);
+  gas = new Gas(60, windowWidth, windowHeight);
+  gasTank = new GasTank();
 }
 
 function draw() {
@@ -17,11 +19,12 @@ function draw() {
   starField.draw();
   ship.draw();
   gas.draw();
+  gasTank.draw();
 }
 
 
 /* 
-globals StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
+globals GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
 BEVEL, BEZIER, BLEND, BLUR, BOLD, BOLDITALIC, BOTTOM, BURN, CENTER, CHORD,
 CLAMP, CLOSE, CONTROL, CORNER, CORNERS, CROSS, CURVE, DARKEST, DEGREES,
 DEG_TO_RAD, DELETE, DIFFERENCE, DILATE, DODGE, DOWN_ARROW, ENTER, ERODE,

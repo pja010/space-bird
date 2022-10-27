@@ -1,14 +1,18 @@
 class Gas {
   constructor(width, x, y) {
-    this.img = loadImage('https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/ff3703de0f975f1.png');
+    this.img = loadImage('https://i.ibb.co/dKmh1TK/gas-can.png');
     this.width = width;
     this.ar = this.img.width / this.img.height;
     this.x = x;
     this.y = y;
+    this.speed = 5
   }
   draw(){
     image(this.img, this.x, this.y, this.width*this.ar, this.width);
-
+    
+    if(keyIsDown()){
+      this.y -= this.speed;
+    }
   }
 
 }
