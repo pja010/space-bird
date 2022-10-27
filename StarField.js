@@ -66,8 +66,11 @@ class StarField {
     }
   }
   
-  setSpeed(v) {
-    this.speed = v;
+  addSpeed(v) {
+    this.speed += v;for (let s of this.stars) {
+      s.draw();
+      s.y += this.speed;
+    }
   }
   resetSpeed() {
     this.speed = this.initialSpeed
