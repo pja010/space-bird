@@ -5,7 +5,7 @@ class Ship {
     this.ar = this.img.width / this.img.height;
     this.x = x;
     this.y = y;
-    this.spr = createSprite(this.width, this.width*this.ar);
+    this.spr = createSprite();
   }
   draw() {
     // Top-left corner of the img is at (0, 0)
@@ -29,7 +29,7 @@ class Ship {
 
 /* 
 
-globals StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
+globals Sprite, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
 BEVEL, BEZIER, BLEND, BLUR, BOLD, BOLDITALIC, BOTTOM, BURN, CENTER, CHORD,
 CLAMP, CLOSE, CONTROL, CORNER, CORNERS, CROSS, CURVE, DARKEST, DEGREES,
 DEG_TO_RAD, DELETE, DIFFERENCE, DILATE, DODGE, DOWN_ARROW, ENTER, ERODE,
