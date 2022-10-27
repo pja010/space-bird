@@ -3,8 +3,8 @@ let starField2;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  starField2 = new Starfield(4, 1, 3, 1);
   starField = new Starfield(8, 1, 4, 2);
+  starField2 = new Starfield(4, 1, 3, 1);
 }
 
 function draw() {
@@ -14,13 +14,7 @@ function draw() {
 }
 
 
-
-
-
-
-
 /* 
-
 globals Starfield, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
 BEVEL, BEZIER, BLEND, BLUR, BOLD, BOLDITALIC, BOTTOM, BURN, CENTER, CHORD,
 CLAMP, CLOSE, CONTROL, CORNER, CORNERS, CROSS, CURVE, DARKEST, DEGREES,
