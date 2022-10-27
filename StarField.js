@@ -35,7 +35,7 @@ class Star {
   }
 }
 
-export class StarField {
+class StarField {
   constructor(rowsRequiredForANewStar, numOfStarsPerRow, starSize, speed) {
     this.pixelRowsCount = 0;
     this.rowsRequiredForANewStar = rowsRequiredForANewStar;
