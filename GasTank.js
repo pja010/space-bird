@@ -1,49 +1,54 @@
 class GasTank {
   constructor() {
-    this.counter = new Count(0, 100)
+    this.counter = new Count(100, 100)
+    this.counter.decreasing()
   }
   
   draw() {
-    let middle = height/2;
     let sVal = this.counter.s;
-    let Progress = map(sVal,0,100,0,width);
+    let Progress = map(sVal,0,100,0,width-20);
 
-    fill(0,100,100);
+    fill(0,200,200);
     textSize(32);
     textFont('monospace')
-    let txt = text('Gas : '+ sVal + '%',0,middle-20);
+    let txt = text('Gas : '+ sVal + '%',10,30);
 
-    rect(10,10,Progress,20,15)
+    rect(10,40,Progress,20,15)
     stroke(0,100,100)
     noFill();
-    rect(0,middle,width,20,15)
-
-    if (floor(random(300)) == 100) {
-      this.counter.reset();
+    rect(10,40,width-20,20,15)
+    
+    if (keyIsDown(49)) {
+      this.counter.add(4)
+      if (this.counter.s > this.counter.f)
+        this.counter.s = this.counter.f
     }
   }
   
 }
 
 class Count{
-  constructor(s,w){
+  constructor(s,f){
     this.s = s
-    this.w = w
+    this.f = f
     this.p = createP('')
   }
-  start(){
+  
+  decreasing() {
     if (!this.done) {
-      setInterval(() => this.counter(),this.w)
+      setInterval(() => {this.decrease(),this.s}, 100)
     }
   }
-  counter(){
-    if(this.s < 100){
-      this.s ++
+  decrease(){
+    if(this.s > 0){
+      this.s --
       this.p.html(this.s)
     }
   }
-  reset(){
-    this.s = 0
+  
+  add(litter) {
+    this.s += litter
+    this.p.html(this.s)
   }
 }
 

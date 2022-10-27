@@ -5,9 +5,12 @@ import '@tensorflow/tfjs-backend-webgl';
 // import '@tensorflow/tfjs-backend-wasm';
 
 let video;
+let skeleton;
 
 function setup(){
-
+  createCanvas(640, 480);
+  video = createCapture(VIDEO);
+  video.hide();
   
 }
 async function asyncCall(){
