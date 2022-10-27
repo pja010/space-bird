@@ -3,6 +3,11 @@
   "dependencies": {
     "yarn": "^1.22.19",
     "npm": "^9.0.1",
-    "node": "^18.12.0"
+    "node": "^18.12.0",
+    "@tensorflow-models/pose-detection": "^2.0.0",
+    "@tensorflow/tfjs-core": "^4.0.0",
+    "@tensorflow/tfjs-converter": "^4.0.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.0.0",
+    "@tensorflow/tfjs-backend-wasm": "^4.0.0"
   }
 }
