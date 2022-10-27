@@ -22,11 +22,11 @@ function draw() {
   gasTank.draw();
   
   if (keyIsDown(UP_ARROW)) {
-    starField.addSpeed(ship.getAcceleration());
-    starField2.addSpeed(ship.getAcceleration());
+    starField.addSpeed(ship.getAcceleration()/2);
+    starField2.addSpeed(ship.getAcceleration()/2);
   } else {
     starField.resetSpeed();
-    starField.resetSpeed();
+    starField2.resetSpeed();
   }
 }
 
