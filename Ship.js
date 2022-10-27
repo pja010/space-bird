@@ -6,7 +6,7 @@ class Ship {
     this.x = x;
     this.y = y;
     this.velocity = 0
-    this.acceleration = 0.2;
+    this.acceleration = 0.4;
     this.topspeed = 10;
   }
   draw() {
@@ -22,20 +22,16 @@ class Ship {
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x += this.velocity;
-    } else
-      this.velocity = 0
-
-    if (keyIsDown(UP_ARROW)) {
+    } else if (keyIsDown(UP_ARROW)) {
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.y -= this.velocity;
-    }
-
-    if (keyIsDown(DOWN_ARROW)) {
+    } else if (keyIsDown(DOWN_ARROW)) {
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.y += this.velocity;
-    }
+    } else
+      this.velocity = 0
     
     if (this.x < -this.width) {
       this.x = windowWidth;
@@ -43,13 +39,7 @@ class Ship {
       this.x = -this.width
     }
   }
-  goLeft(){
-    
-  }
   
-  goRight(){
-    
-  }
 }
 
 
