@@ -11,7 +11,7 @@ class Gas {
     image(this.img, this.x, this.y, this.width*this.ar, this.width);
     
     if(true){
-      this.y -= this.speed;
+      this.y += this.speed;
     }
   }
 
