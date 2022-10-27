@@ -8,7 +8,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
-  ship = new Ship(60, windowWidth/2-30, windowHeight-80);
+  ship = new Ship(60, windowWidth/2-30, windowHeight-180);
   gas = new Gas(60, windowWidth/2, 1);
   gasTank = new GasTank();
 }
@@ -22,7 +22,7 @@ function draw() {
   gasTank.draw();
   
   if (keyIsDown(UP_ARROW)) {
-    starField.addSpeed(ship.getAcceleration()/2);
+    starField.addSpeed(ship.getAcceleration());
     starField2.addSpeed(ship.getAcceleration()/2);
   } else {
     starField.resetSpeed();
