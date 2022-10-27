@@ -1,16 +1,19 @@
 let starField;
 let starField2;
+let ship;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
+  ship = new Ship();
 }
 
 function draw() {
   background(0);
   starField2.draw();
   starField.draw();
+  ship.draw();
 }
 
 
