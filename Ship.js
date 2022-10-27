@@ -5,17 +5,19 @@ class Ship {
     this.ar = this.img.width / this.img.height;
     this.x = x;
     this.y = y;
+    this.velocity = 0
+    this.acceleration = 0.1;
+    this.topspeed = 10;
   }
   draw() {
     // Top-left corner of the img is at (0, 0)
     // Width and height are the img's original width and height
     image(this.img, this.x, this.y, this.width*this.ar, this.width);
     
-    let i;
     if (keyIsDown(LEFT_ARROW)) {
-      for (i=1;i<10;i++){
-        this.x -= 0.5;
-      }
+      this.velocity += this.acceleration;
+      // this.velocity.limit(this.topspeed);
+      this.x -= this.velocity;
     }
 
     if (keyIsDown(RIGHT_ARROW)) {
@@ -30,10 +32,10 @@ class Ship {
       this.y += 10;
     }
     
-    if (this.x < -this.img.width+30) {
-      this.x = windowWidth-20;
-    } else if (this.x > windowWidth-30) {
-      this.x = -this.img.width+20
+    if (this.x < -this.width) {
+      this.x = windowWidth;
+    } else if (this.x > windowWidth) {
+      this.x = -this.width
     }
   }
 }
