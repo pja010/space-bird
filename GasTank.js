@@ -6,14 +6,14 @@ class GasTank {
   draw() {
     let middle = height/2;
     let sVal = this.counter.s;
-    let Progress = map(sVal,0,100,0,width/3);
+    let Progress = map(sVal,0,100,0,width);
 
     fill(0,100,100);
     textSize(32);
     textFont('monospace')
     let txt = text('Gas : '+ sVal + '%',0,middle-20);
 
-    rect(0,middle,Progress,20,15)
+    rect(10,10,Progress,20,15)
     stroke(0,100,100)
     noFill();
     rect(0,middle,width,20,15)

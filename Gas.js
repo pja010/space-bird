@@ -10,7 +10,7 @@ class Gas {
   draw(){
     image(this.img, this.x, this.y, this.width*this.ar, this.width);
     
-    if(keyIsDown()){
+    if(true){
       this.y -= this.speed;
     }
   }
