@@ -5,6 +5,7 @@ class Ship {
     this.ar = this.img.width / this.img.height;
     this.x = x;
     this.y = y;
+    this.spr = createSprite(this.width, this.width*this.ar);
   }
   draw() {
     // Top-left corner of the img is at (0, 0)
@@ -15,14 +16,12 @@ class Ship {
       if (keyCode == RIGHT_ARROW) {
         this.x += 5; 
       } else if (keyCode == LEFT_ARROW) {
-       this.x -= 5;
-     } else if (keyCode == UP_ARROW) {
-       this.y -= 5; 
-     } else if (keyCode == DOWN_ARROW) {
-       this.y +=5; 
-     }
-      event.preventDefault();
-      return false; 
+        this.x -= 5;
+      } else if (keyCode == UP_ARROW) {
+        this.y -= 5; 
+      } else if (keyCode == DOWN_ARROW) {
+        this.y +=5; 
+      }
     }
   }
 }
