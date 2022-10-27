@@ -1,11 +1,13 @@
 class Ship {
-  constructor() {
+  constructor(width) {
     this.img = loadImage('https://i.ibb.co/1XfydYZ/Nice-Png-spaceship-png-138961.png');
+    this.width = width;
+    this.ar = this.img.width / this.img.height;
   }
   draw() {
     // Top-left corner of the img is at (0, 0)
     // Width and height are the img's original width and height
-    image(this.img, 0, 0);
+    image(this.img, 0, 0, this.width*this.ar, this.width);
   }
 }
 
