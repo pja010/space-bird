@@ -1,12 +1,14 @@
 let starField;
 let starField2;
 let ship;
+let gas;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
   ship = new Ship(60, windowWidth/2-30, windowHeight-80);
+  gas = new Gas(60, 0, 0);
 }
 
 function draw() {
@@ -14,6 +16,7 @@ function draw() {
   starField2.draw();
   starField.draw();
   ship.draw();
+  gas.draw();
 }
 
 

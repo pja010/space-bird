@@ -1,20 +1,12 @@
-class Gas {
+class Ship {
   constructor(width, x, y) {
-    this.img = loadImage('https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/ff3703de0f975f1.png');
-    this.width = width;
-    this.ar = this.img.width / this.img.height;
-    this.x = x;
-    this.y = y;
+    
   }
-  draw(){
-    image(this.img, this.x, this.y, this.width*this.ar, this.width);
-
+  draw() {
+    
   }
-
+  
 }
-
-
-
 
 
 /* 
