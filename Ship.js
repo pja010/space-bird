@@ -11,26 +11,29 @@ class Ship {
     // Width and height are the img's original width and height
     image(this.img, this.x, this.y, this.width*this.ar, this.width);
     
+    let i;
     if (keyIsDown(LEFT_ARROW)) {
-      this.x -= 5;
+      for (i=1;i<10;i++){
+        this.x -= 0.5;
+      }
     }
 
     if (keyIsDown(RIGHT_ARROW)) {
-      this.x += 5;
+      this.x += 10;
     }
 
     if (keyIsDown(UP_ARROW)) {
-      this.y -= 5;
+      this.y -= 10;
     }
 
     if (keyIsDown(DOWN_ARROW)) {
-      this.y += 5;
+      this.y += 10;
     }
     
-    if (this.x < -this.img.width/2) {
-      this.x = windowWidth;
-    } else if (this.x > windowWidth) {
-      this.x = -this.img.width
+    if (this.x < -this.img.width+30) {
+      this.x = windowWidth-20;
+    } else if (this.x > windowWidth-30) {
+      this.x = -this.img.width+20
     }
   }
 }
