@@ -26,10 +26,6 @@ class Ship {
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.y -= this.velocity;
-    } else if (keyIsDown(DOWN_ARROW)) {
-      this.velocity += this.acceleration;
-      // this.velocity.limit(this.topspeed);
-      this.y += this.velocity;
     } else
       this.velocity = 0
     

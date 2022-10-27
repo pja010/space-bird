@@ -1,6 +1,6 @@
 class GasTank {
   constructor() {
-    this.counter = new Count(100, 100)
+    this.counter = new Count(0, 100)
     this.counter.decreasing()
   }
   
@@ -31,7 +31,6 @@ class Count{
   constructor(s,f){
     this.s = s
     this.f = f
-    this.p = createP('')
   }
   
   decreasing() {
@@ -42,13 +41,13 @@ class Count{
   decrease(){
     if(this.s > 0){
       this.s --
-      this.p.html(this.s)
+      // this.p.html(this.s) //acted like console.log()
     }
   }
   
   add(litter) {
     this.s += litter
-    this.p.html(this.s)
+    // this.p.html(this.s)
   }
 }
 

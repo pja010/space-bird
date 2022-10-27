@@ -42,6 +42,7 @@ class StarField {
     this.numOfStarsPerRow = numOfStarsPerRow;
     this.starSize = starSize;
     this.speed = speed;
+    this.initialSpeed = speed;
     this.stars = [];
   }
 
@@ -63,6 +64,13 @@ class StarField {
     for (let i = 0; i < this.numOfStarsPerRow; i++) {
       this.createStar();
     }
+  }
+  
+  setSpeed(v) {
+    this.speed = v;
+  }
+  resetSpeed() {
+    this.speed = this.initialSpeed
   }
 
   cleanUpStars() {
