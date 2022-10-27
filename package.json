@@ -1,0 +1,8 @@
+{
+  "name": "movenet",
+  "dependencies": {
+    "yarn": "^1.22.19",
+    "npm": "^9.0.1",
+    "node": "^18.12.0"
+  }
+}
