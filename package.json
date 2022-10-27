@@ -1,5 +1,7 @@
 {
   "name": "movenet",
+  "main": "movenet.js",
+  "scripts": {"start": "node movenet.js"},
   "dependencies": {
     "yarn": "^1.22.19",
     "npm": "^9.0.1",
