@@ -1,3 +1,5 @@
+import {Starfield} from "Components/Starfield.js"
+
 let starField;
 let starField2;
 

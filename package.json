@@ -1,0 +1,8 @@
+{
+  "name": "cs358-expression-project",
+  "main": "index.html",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "type": "module"
+}
