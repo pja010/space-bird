@@ -14,7 +14,13 @@ class Gas {
       this.y += this.speed;
     }
   }
-
+  getY() {
+    return this.y;
+  }
+  reset(x, y){
+    x = this.x;
+    y = this.y;
+  }
 }
 
 
