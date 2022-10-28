@@ -19,7 +19,7 @@ function draw() {
   starField.draw();
   ship.draw();
   gas.draw();
-  while(gasTank.counter.)
+  while(gasTank.counter.s <= 0){}
   if(gas.getY <= windowHeight-150){
     gas.reset(windowWidth/1.2, 1);
     gas.draw();
