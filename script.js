@@ -19,6 +19,11 @@ function draw() {
   starField.draw();
   ship.draw();
   gas.draw();
+  while(gasTank.counter.)
+  if(gas.getY <= windowHeight-150){
+    gas.reset(windowWidth/1.2, 1);
+    gas.draw();
+  }
   gasTank.draw();
   
   if (keyIsDown(UP_ARROW)) {
