@@ -24,6 +24,10 @@ class Gas {
     this.y = y;
   }
   
+  getCoordinates(){
+    return [this.x, this.y];
+  }
+  
   getY() {
     return this.y;
   }

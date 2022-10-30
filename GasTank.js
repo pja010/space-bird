@@ -4,7 +4,7 @@ class GasTank {
     this.counter.decreasing()
   }
   
-  draw() {
+  draw(ship, gas) {
     let sVal = this.counter.s;
     let Progress = map(sVal,0,100,0,width-20);
 
@@ -18,8 +18,10 @@ class GasTank {
     noFill();
     rect(10,40,width-20,20,15)
     
-    if (keyIsDown(49)) {
-      this.counter.add(4)
+    if(ship.getCoordinates()[0] - gas.getCoordinates()[0] < 2.5 && 
+       ship.getCoordinates()[1] - gas.getCoordinates()[1] < 2.5) {
+      
+      this.counter.add(2)
       if (this.counter.s > this.counter.f)
         this.counter.s = this.counter.f
     }

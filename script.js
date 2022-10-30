@@ -25,7 +25,7 @@ function draw() {
   starField.draw();
   ship.draw();
   gas.draw();
-  gasTank.draw();
+  gasTank.draw(ship, gas);
   
   if (keyIsDown(UP_ARROW)) {
     starField.addSpeed(ship.getAcceleration());
