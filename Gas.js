@@ -7,23 +7,32 @@ class Gas {
     this.y = y;
     this.speed = 5
   }
+    
   draw(){
     image(this.img, this.x, this.y, this.width*this.ar, this.width);
     
     if(true){
       this.y += this.speed;
       if(this.getY() > windowHeight){
-        this.reset(windowWidth / 2, 1)
+        this.reset(getRandomInt(2, windowWidth - 2), 1)
       }
     }
   }
+  
+  reset(x, y){
+    this.x = x;
+    this.y = y;
+  }
+  
   getY() {
     return this.y;
   }
-  reset(x, y){
-    x = this.x;
-    y = this.y;
-  }
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
 

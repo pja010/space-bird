@@ -3,12 +3,12 @@ html, body {
   padding: 0;
 }
 canvas {
-  postion
+  position:relative;
   display: block;
   z-index:1;
 }
 
-.start-screen {
+#start-screen {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -17,7 +17,6 @@ canvas {
   padding: 0px;
   z-index:10;
 
-  position: relative;
   width: 100vw;
   height: 100vh;
   color: rgb(0,200,200);

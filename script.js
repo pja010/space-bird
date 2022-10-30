@@ -4,12 +4,18 @@ let ship;
 let gas;
 let gasTank;
 
+// make the start screen goes away when a key is pressed
+window.addEventListener("keydown", function() {
+  console.log("stuff");
+  document.getElementById("start-screen").style.display = "none";
+}, {once : true});
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
   ship = new Ship(60, windowWidth/2-30, windowHeight-180);
-  // gas = new Gas(60, windowWidth/2, 1);
+  gas = new Gas(60, windowWidth/2, 1);
   gasTank = new GasTank();
 }
 
@@ -18,12 +24,7 @@ function draw() {
   starField2.draw();
   starField.draw();
   ship.draw();
-  // gas.draw();
-  // while(gasTank.counter.s <= 0){}
-  // if(gas.getY <= windowHeight-150){
-  //   gas.reset(windowWidth/1.2, 1);
-  //   gas.draw();
-  // }
+  gas.draw();
   gasTank.draw();
   
   if (keyIsDown(UP_ARROW)) {
