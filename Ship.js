@@ -1,6 +1,6 @@
 class Ship {
   constructor(width, x, y) {
-    this.img = loadImage('https://i.ibb.co/1XfydYZ/Nice-Png-spaceship-png-138961.png');
+    this.img = loadImage('https://i.ibb.co/87PFBRn/Nice-Png-spaceship-png-138961.png');
     this.width = width;
     this.ar = this.img.width / this.img.height;
     this.x = x;

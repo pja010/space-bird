@@ -12,8 +12,8 @@ class Gas {
     
     if(true){
       this.y += this.speed;
-      if(this.y > windowHeight){
-        reset()
+      if(this.getY() > windowHeight){
+        this.reset(windowWidth / 2, 1)
       }
     }
   }
