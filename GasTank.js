@@ -27,8 +27,8 @@ class GasTank {
       ship.y + ship.height >= gas.y &&
       ship.y <= gas.y + gas.height) {
       
-      this.counter.add(10)       //counter.add(x) x = % of gas tank
-      gas.reset(getRandomInt(2, windowWidth - 2), -100);
+      this.counter.add(50)  //counter.add(x) x = % of gas tank
+      gas.reset(getRandomInt(2, windowWidth - 2), -500);
       if (this.counter.s > this.counter.f)
         this.counter.s = this.counter.f
     }
