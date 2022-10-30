@@ -5,3 +5,18 @@ html, body {
 canvas {
   display: block;
 }
+
+.start-screen {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+
+  position: relative;
+  width: 548px;
+  height: 357px;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.7);
+}
