@@ -2,6 +2,8 @@ class GasTank {
   constructor() {
     this.counter = new Count(0, 100)
     this.counter.decreasing()
+    this.IMPACT_X = 1;
+    this.IMPACT_Y = 2;
   }
   
   draw(ship, gas) {
@@ -18,8 +20,8 @@ class GasTank {
     noFill();
     rect(10,40,width-20,20,15)
     
-    if(ship.getCoordinates()[0] - gas.getCoordinates()[0] < 2.5 && 
-       ship.getCoordinates()[1] - gas.getCoordinates()[1] < 2.5) {
+    if(ship.x - gas.x < this.IMPACT_X && 
+       ship.y - gas.y < this.IMPACT_Y) {
       
       this.counter.add(2)
       if (this.counter.s > this.counter.f)

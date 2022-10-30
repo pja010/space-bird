@@ -15,7 +15,7 @@ function setup() {
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
   ship = new Ship(60, windowWidth/2-30, windowHeight-180);
-  gas = new Gas(60, windowWidth/2, 1);
+  gas = new Gas(60, windowWidth/2, 1, 5);
   gasTank = new GasTank();
 }
 
@@ -28,11 +28,14 @@ function draw() {
   gasTank.draw(ship, gas);
   
   if (keyIsDown(UP_ARROW)) {
-    starField.addSpeed(ship.getAcceleration());
-    starField2.addSpeed(ship.getAcceleration()/1.5);
+    let a = ship.getAcceleration();
+    starField.addSpeed(a);
+    starField2.addSpeed(a/1.5);
+    gas.addSpeed(a*1.5);
   } else {
     starField.resetSpeed();
     starField2.resetSpeed();
+    gas.resetSpeed();
   }
 }
 

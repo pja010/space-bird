@@ -2,7 +2,8 @@ class Ship {
   constructor(width, x, y) {
     this.img = loadImage('https://i.ibb.co/87PFBRn/Nice-Png-spaceship-png-138961.png');
     this.width = width;
-    this.ar = this.img.width / this.img.height;
+    let ar = this.img.width / this.img.height;
+    this.height = this.width*ar
     this.x = x;
     this.y = y;
     this.velocity = 0
@@ -12,7 +13,7 @@ class Ship {
   draw() {
     // Top-left corner of the img is at (0, 0)
     // Width and height are the img's original width and height
-    image(this.img, this.x, this.y, this.width*this.ar, this.width);
+    image(this.img, this.x, this.y, this.width, this.height);
     
     if (keyIsDown(LEFT_ARROW)) {
       this.velocity += this.acceleration;

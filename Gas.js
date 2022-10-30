@@ -1,11 +1,12 @@
 class Gas {
-  constructor(width, x, y) {
+  constructor(width, x, y, speed) {
     this.img = loadImage('https://i.ibb.co/dKmh1TK/gas-can.png');
     this.width = width;
     this.ar = this.img.width / this.img.height;
     this.x = x;
     this.y = y;
-    this.speed = 5
+    this.speed = speed
+    this.initialSpeed = speed;
   }
     
   draw(){
@@ -30,6 +31,12 @@ class Gas {
   
   getY() {
     return this.y;
+  }
+  addSpeed(v) {
+    this.speed += v
+  }
+  resetSpeed(v) {
+    this.speed = this.initialSpeed;
   }
 }
 
