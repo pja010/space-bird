@@ -11,7 +11,7 @@ canvas {
 #start-screen {
   position: absolute;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0px;
