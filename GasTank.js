@@ -20,10 +20,15 @@ class GasTank {
     noFill();
     rect(10,40,width-20,20,15)
     
-    if(ship.x - gas.x < this.IMPACT_X && 
-       ship.y - gas.y < this.IMPACT_Y) {
+    // if(ship.x - gas.x < this.IMPACT_X && 
+    //    ship.y - gas.y < this.IMPACT_Y) {
+    if(ship.x + ship.width >= gas.x &&
+      ship.x <= gas.x + gas.width &&
+      ship.y + ship.height >= gas.y &&
+      ship.y <= gas.y + gas.height) {
       
-      this.counter.add(2)
+      this.counter.add(10)       //counter.add(x) x = % of gas tank
+      gas.reset(getRandomInt(2, windowWidth - 2), -100);
       if (this.counter.s > this.counter.f)
         this.counter.s = this.counter.f
     }
@@ -53,6 +58,13 @@ class Count{
     this.s += litter
     // this.p.html(this.s)
   }
+}
+
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
 /* 

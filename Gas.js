@@ -2,7 +2,8 @@ class Gas {
   constructor(width, x, y, speed) {
     this.img = loadImage('https://i.ibb.co/dKmh1TK/gas-can.png');
     this.width = width;
-    this.ar = this.img.width / this.img.height;
+    let ar = this.img.width / this.img.height;
+    this.height = this.width*ar
     this.x = x;
     this.y = y;
     this.speed = speed
@@ -10,11 +11,11 @@ class Gas {
   }
     
   draw(){
-    image(this.img, this.x, this.y, this.width*this.ar, this.width);
+    image(this.img, this.x, this.y, this.width, this.height);
     
     if(true){
       this.y += this.speed;
-      if(this.getY() > windowHeight){
+      if(this.y > windowHeight){
         this.reset(getRandomInt(2, windowWidth - 2), 1)
       }
     }
@@ -25,13 +26,6 @@ class Gas {
     this.y = y;
   }
   
-  getCoordinates(){
-    return [this.x, this.y];
-  }
-  
-  getY() {
-    return this.y;
-  }
   addSpeed(v) {
     this.speed += v
   }
