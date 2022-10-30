@@ -6,33 +6,33 @@ let gasTank;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  starField = new StarField(8, 1, 4, 2);
-  starField2 = new StarField(4, 1, 3, 1);
-  ship = new Ship(60, windowWidth/2-30, windowHeight-180);
-  gas = new Gas(60, windowWidth/2, 1);
-  gasTank = new GasTank();
+  // starField = new StarField(8, 1, 4, 2);
+  // starField2 = new StarField(4, 1, 3, 1);
+  // ship = new Ship(60, windowWidth/2-30, windowHeight-180);
+  // gas = new Gas(60, windowWidth/2, 1);
+  // gasTank = new GasTank();
 }
 
 function draw() {
   background(0);
-  starField2.draw();
-  starField.draw();
-  ship.draw();
-  gas.draw();
-  while(gasTank.counter.s <= 0){}
-  if(gas.getY <= windowHeight-150){
-    gas.reset(windowWidth/1.2, 1);
-    gas.draw();
-  }
-  gasTank.draw();
+  // starField2.draw();
+  // starField.draw();
+  // ship.draw();
+  // gas.draw();
+  // while(gasTank.counter.s <= 0){}
+  // if(gas.getY <= windowHeight-150){
+  //   gas.reset(windowWidth/1.2, 1);
+  //   gas.draw();
+  // }
+  // gasTank.draw();
   
-  if (keyIsDown(UP_ARROW)) {
-    starField.addSpeed(ship.getAcceleration());
-    starField2.addSpeed(ship.getAcceleration()/2);
-  } else {
-    starField.resetSpeed();
-    starField2.resetSpeed();
-  }
+  // if (keyIsDown(UP_ARROW)) {
+  //   starField.addSpeed(ship.getAcceleration());
+  //   starField2.addSpeed(ship.getAcceleration()/2);
+  // } else {
+  //   starField.resetSpeed();
+  //   starField2.resetSpeed();
+  // }
 }
 
 
