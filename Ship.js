@@ -1,12 +1,14 @@
 class Ship {
   constructor(width, x, y) {
-    this.img = loadImage('https://i.ibb.co/87PFBRn/Nice-Png-spaceship-png-138961.png');
+    this.img = loadImage(
+      "https://i.ibb.co/87PFBRn/Nice-Png-spaceship-png-138961.png"
+    );
     this.width = width;
     let ar = this.img.width / this.img.height;
-    this.height = this.width*ar
+    this.height = this.width * ar;
     this.x = x;
     this.y = y;
-    this.velocity = 0
+    this.velocity = 0;
     this.acceleration = 0.4;
     this.topspeed = 10;
   }
@@ -14,7 +16,7 @@ class Ship {
     // Top-left corner of the img is at (0, 0)
     // Width and height are the img's original width and height
     image(this.img, this.x, this.y, this.width, this.height);
-    
+
     if (keyIsDown(LEFT_ARROW)) {
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
@@ -23,25 +25,22 @@ class Ship {
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x += this.velocity;
-    } else
-      this.velocity = 0
-    
+    } else this.velocity = 0;
+
     if (this.x < -this.width) {
       this.x = windowWidth;
     } else if (this.x > windowWidth) {
-      this.x = -this.width
+      this.x = -this.width;
     }
   }
-  
+
   getVelocity() {
-    return this.velocity
+    return this.velocity;
   }
   getAcceleration() {
-    return this.acceleration
+    return this.acceleration;
   }
-  
 }
-
 
 /* 
 

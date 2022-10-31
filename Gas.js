@@ -1,33 +1,33 @@
 class Gas {
   constructor(width, x, y, speed) {
-    this.img = loadImage('https://i.ibb.co/dKmh1TK/gas-can.png');
+    this.img = loadImage("https://i.ibb.co/dKmh1TK/gas-can.png");
     this.width = width;
     let ar = this.img.width / this.img.height;
-    this.height = this.width*ar
+    this.height = this.width * ar;
     this.x = x;
     this.y = y;
-    this.speed = speed
+    this.speed = speed;
     this.initialSpeed = speed;
   }
-    
-  draw(){
+
+  draw() {
     image(this.img, this.x, this.y, this.width, this.height);
-    
-    if(true){
+
+    if (true) {
       this.y += this.speed;
-      if(this.y > windowHeight){
+      if (this.y > windowHeight) {
         this.reset();
       }
     }
   }
-  
-  reset(x = getRandomInt(this.width, windowWidth - this.width), y = 1){
+
+  reset(x = getRandomInt(this.width, windowWidth - this.width), y = 1) {
     this.x = x;
     this.y = y;
   }
-  
+
   addSpeed(v) {
-    this.speed += v
+    this.speed += v;
   }
   resetSpeed(v) {
     this.speed = this.initialSpeed;
@@ -35,14 +35,10 @@ class Gas {
 }
 
 function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
-
-
-
-
 
 /* 
 

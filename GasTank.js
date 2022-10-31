@@ -4,7 +4,7 @@ class GasTank {
     this.counter.decreasing()
   }
   
-  draw(ship, gas) {
+  draw(ship, gas, sound=null) {
     let sVal = this.counter.s;
     let Progress = map(sVal,0,100,0,width-20);
 

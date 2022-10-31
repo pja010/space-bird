@@ -3,6 +3,7 @@ let starField2;
 let ship;
 let gas;
 let gasTank;
+let sound;
 
 // make the start screen goes away when a key is pressed
 window.addEventListener("keydown", function() {
@@ -10,7 +11,9 @@ window.addEventListener("keydown", function() {
   document.getElementById("start-screen").style.display = "none";
 }, {once : true});
 
+
 function setup() {
+  sound = loadSound('assets/mario-coin-sound.mp3');
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
@@ -79,7 +82,7 @@ exitPointerLock, exp, fill, filter, float, floor, fract, frameRate,
 frustum, fullscreen, get, getFrameRate, getItem, getURL, getURLParams, 
 getURLPath, green, gridOutput, hex, hour, httpDo, httpGet, httpPost, hue, 
 image, imageMode, int, isLooping, join, keyIsDown, lerp, lerpColor, 
-lightFalloff, lightness, lights, line, loadBytes, loadFont, loadImage, 
+lightFalloff, lightness, lights, line, loadSound, loadBytes, loadFont, loadImage, 
 loadJSON, loadModel, loadPixels, loadShader, loadStrings, loadTable, loadXML, 
 log, loop, mag, map, match, matchAll, max, millis, min, minute, model, month, 
 nf, nfc, nfp, nfs, noCanvas, noCursor, noDebugMode, noErase, noFill, noLights, 
