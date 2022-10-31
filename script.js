@@ -12,9 +12,9 @@ window.addEventListener("keydown", function() {
 }, {once : true});
 
 
-// function preload(){
-//     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
-// }
+function preload(){
+    sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);

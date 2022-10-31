@@ -44,12 +44,8 @@ class GasTank {
       
       this.counter.add(50) //counter.add(x) x = % of gas tank
       
-      // if(!sound.isPlaying()){
-      //   sound.play();
-      // } 
-      // else{
-      //   sound.stop() 
-      // }
+      sound.play();
+    
       
       gas.reset();
       if (this.counter.s > this.counter.f)
