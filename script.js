@@ -4,13 +4,13 @@ let ship;
 let gas;
 let gasTank;
 let sound;
-// let state;
 
 // make the start screen goes away when a key is pressed
 window.addEventListener("keydown", function() {
   console.log("stuff");
   document.getElementById("start-screen").style.display = "none";
 }, {once : true});
+
 
 // function preload(){
 //     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');

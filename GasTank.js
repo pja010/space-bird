@@ -33,7 +33,6 @@ class GasTank {
 
 
     rect(10,40,Progress,20,15)
-    stroke(0,100,100)
     noFill();
     rect(10,40,width-20,20,15)
     
