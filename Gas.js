@@ -16,12 +16,12 @@ class Gas {
     if(true){
       this.y += this.speed;
       if(this.y > windowHeight){
-        this.reset(getRandomInt(2, windowWidth - 2), 1)
+        this.reset();
       }
     }
   }
   
-  reset(x = getRandomInt(2, windowWidth - 2), y = 1){
+  reset(x = getRandomInt(this.width, windowWidth - this.width), y = 1){
     this.x = x;
     this.y = y;
   }
