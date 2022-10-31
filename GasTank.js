@@ -1,6 +1,6 @@
 class GasTank {
   constructor() {
-    this.counter = new Count(0, 100)
+    this.counter = new Count(50, 100)
     this.counter.decreasing()
   }
   
@@ -10,15 +10,27 @@ class GasTank {
     
     if(this.counter.s > 20){
       fill(0,200,200);
+      stroke(0,100,100);
     } 
     else {
       fill(200, 0, 0);
+      stroke(200,0,0);
     }
     
     textSize(32);
     textFont('monospace')
     
-    let txt = text('Gas : '+ sVal + '%',10,30);
+    if(this.counter.s == 0){
+      let txt = text('Gas : EMPTY',10,30);
+      gas.state = false;
+    }
+    else if(this.counter.s == 100){
+      let txt = text('Gas : FULL' ,10,30);
+    }
+    else{
+      let txt = text('Gas : '+ sVal + '%',10,30);
+    }
+
 
     rect(10,40,Progress,20,15)
     stroke(0,100,100)

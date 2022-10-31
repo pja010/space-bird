@@ -8,12 +8,13 @@ class Gas {
     this.y = y;
     this.speed = speed;
     this.initialSpeed = speed;
+    this.state = true; //true = playing game; false == lose game
   }
 
   draw() {
     image(this.img, this.x, this.y, this.width, this.height);
 
-    if (true) {
+    if (this.state) {
       this.y += this.speed;
       if (this.y > windowHeight) {
         this.reset();
