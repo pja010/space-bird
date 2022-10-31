@@ -24,4 +24,23 @@ canvas {
   font-family: monospace;
 
   background: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
+}
+#lost-screen {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  z-index:10;
+  text-align: center;
+
+  width: 100vw;
+  height: 100vh;
+  color: rgb(0,200,200);
+  font-family: monospace;
+
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
 }

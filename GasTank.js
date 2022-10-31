@@ -23,6 +23,11 @@ class GasTank {
     if(this.counter.s == 0){
       let txt = text('Gas : EMPTY',10,30);
       gas.state = false;
+      document.getElementById("lost-screen").style.display = "flex"
+      window.addEventListener("keydown", function() {
+        console.log('vkl')
+        document.getElementById("lost-screen").style.display = "none"
+      });
     }
     else if(this.counter.s == 100){
       let txt = text('Gas : FULL' ,10,30);
