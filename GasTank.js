@@ -24,7 +24,15 @@ class GasTank {
       ship.y + ship.height >= gas.y &&
       ship.y <= gas.y + gas.height) {
       
-      this.counter.add(50)  //counter.add(x) x = % of gas tank
+      this.counter.add(50) //counter.add(x) x = % of gas tank
+      
+      // if(!sound.isPlaying()){
+      //   sound.play();
+      // } 
+      // else{
+      //   sound.stop() 
+      // }
+      
       gas.reset();
       if (this.counter.s > this.counter.f)
         this.counter.s = this.counter.f

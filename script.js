@@ -11,9 +11,11 @@ window.addEventListener("keydown", function() {
   document.getElementById("start-screen").style.display = "none";
 }, {once : true});
 
+// function preload(){
+//     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
+// }
 
 function setup() {
-  sound = loadSound('assets/mario-coin-sound.mp3');
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
@@ -28,7 +30,7 @@ function draw() {
   starField.draw();
   ship.draw();
   gas.draw();
-  gasTank.draw(ship, gas);
+  gasTank.draw(ship, gas, sound);
   
   if (keyIsDown(UP_ARROW)) {
     let a = ship.getAcceleration();
