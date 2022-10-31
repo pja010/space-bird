@@ -7,7 +7,6 @@ let sound;
 
 // make the start screen goes away when a key is pressed
 window.addEventListener("keydown", function() {
-  console.log("stuff");
   document.getElementById("start-screen").style.display = "none";
 }, {once : true});
 
