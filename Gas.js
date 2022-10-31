@@ -21,7 +21,7 @@ class Gas {
     }
   }
   
-  reset(x, y){
+  reset(x = getRandomInt(2, windowWidth - 2), y = 1){
     this.x = x;
     this.y = y;
   }
