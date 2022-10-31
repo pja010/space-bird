@@ -7,10 +7,17 @@ class GasTank {
   draw(ship, gas, sound=null) {
     let sVal = this.counter.s;
     let Progress = map(sVal,0,100,0,width-20);
-
-    fill(0,200,200);
+    
+    if(this.counter.s > 20){
+      fill(0,200,200);
+    } 
+    else {
+      fill(200, 0, 0);
+    }
+    
     textSize(32);
     textFont('monospace')
+    
     let txt = text('Gas : '+ sVal + '%',10,30);
 
     rect(10,40,Progress,20,15)

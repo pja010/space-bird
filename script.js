@@ -4,6 +4,7 @@ let ship;
 let gas;
 let gasTank;
 let sound;
+// let state;
 
 // make the start screen goes away when a key is pressed
 window.addEventListener("keydown", function() {
