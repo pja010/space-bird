@@ -19,7 +19,7 @@ function setup() {
   gas = new Gas(60, windowWidth/2, 0, 5);
   counter = new Counter();
   gasTank = new GasTank(counter);
-  angles = new Angles();
+  //angles = new Angles();
 }
 
 // make the start screen goes away when a key is pressed

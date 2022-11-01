@@ -33,14 +33,9 @@ async function init() {
 
 async function videoReady() {
   console.log("video ready");
-  await getPoses();
+  await getTurnAngle();
   await leftShoulderAngle();
   await rightShoulderAngle();
-}
-
-// interface
-function getLeanAngle() {
-  setup()
 }
 
 async function setup() {
@@ -51,7 +46,7 @@ async function setup() {
 
 }
 
-async function getPoses() {
+async function getTurnAngle() {
   poses = await detector.estimatePoses(video.elt);
   console.log(video);
   console.log(poses);
@@ -84,13 +79,14 @@ async function getPoses() {
   let angle = v0.angleBetween(v1)
   let degrees = (angle * 180/PI)
   // angle is PI/2
-  print("hip:", degrees);
+  // print("hip:", degrees);
   
   //print(my_hip);
   //print(body_line);
   // await leftShoulderAngle();
   // await rightShoulderAngle();
-  setTimeout(getPoses, 0);
+  setTimeout(getTurnAngle, 0);
+  return degrees;
 }
 
 async function rightShoulderAngle(){
