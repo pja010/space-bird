@@ -9,7 +9,7 @@ class Ship {
     this.x = x;
     this.y = y;
     this.velocity = 0;
-    this.acceleration = 1;
+    this.acceleration = 0.5;
     this.topspeed = 20;
     this.turn = 0;
   }
