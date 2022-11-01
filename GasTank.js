@@ -1,6 +1,7 @@
 class GasTank {
   constructor() {
     this.counter = new Count(50, 100)
+    this.lost = false
   }
   
   draw(ship, gas, sound=null) {
@@ -23,9 +24,7 @@ class GasTank {
       let txt = text('Gas : EMPTY',10,30);
       gas.state = false;
       document.getElementById("lost-screen").style.display = "flex"
-      if (keyIsDown(ENTER)) {
-        document.getElementById("lost-screen").style.display = "none"
-      }
+      this.lost = true
     }
     else if(this.counter.s == 100){
       let txt = text('Gas : FULL' ,10,30);
@@ -34,8 +33,6 @@ class GasTank {
       let txt = text('Gas : '+ sVal + '%',10,30);
     }
     
-
-
     rect(10,40,Progress,20,15)
     noFill();
     rect(10,40,width-20,20,15)
@@ -55,6 +52,10 @@ class GasTank {
       if (this.counter.s > this.counter.f)
         this.counter.s = this.counter.f
     }
+  }
+  
+  resetGame() {
+    
   }
   
 }

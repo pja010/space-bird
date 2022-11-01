@@ -44,6 +44,9 @@ function draw() {
   }
 }
 
+function mousePressed() {
+  
+}
 
 /* 
 globals GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
