@@ -5,6 +5,7 @@ let gas;
 let gasTank;
 let sound;
 let counter;
+let angles;
 
 function preload(){
     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
@@ -18,7 +19,7 @@ function setup() {
   gas = new Gas(60, windowWidth/2, 0, 5);
   counter = new Counter();
   gasTank = new GasTank(counter);
-  Angles = new Angles();
+  angles = new Angles();
 }
 
 // make the start screen goes away when a key is pressed
