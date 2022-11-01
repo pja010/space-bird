@@ -18,9 +18,9 @@ class Ship {
     image(this.img, this.x, this.y, this.width, this.height);
     
     // GESTURE INTEGRATION - gestures.js
-    setup();
-    const MIN_TURN_ANGLE_RIGHT = 10;
-    const MIN_TURN_ANGLE_LEFT = -10;
+    // setup();
+    // const MIN_TURN_ANGLE_RIGHT = 10;
+    // const MIN_TURN_ANGLE_LEFT = -10;
     //
     
     if (this.velocity >= this.topspeed)
