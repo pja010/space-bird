@@ -16,8 +16,8 @@ function setup() {
   starField2 = new StarField(4, 1, 3, 1);
   ship = new Ship(60, windowWidth/2-30, windowHeight-180);
   gas = new Gas(60, windowWidth/2, 0, 5);
-  gasTank = new GasTank();
   counter = new Counter();
+  gasTank = new GasTank(counter);
 }
 
 // make the start screen goes away when a key is pressed
@@ -33,8 +33,8 @@ function draw() {
   starField.draw();
   ship.draw();
   gas.draw();
-  gasTank.draw(ship, gas, sound);
   counter.draw();
+  gasTank.draw(ship, gas, sound, counter);
   
   if (keyIsDown(UP_ARROW)) {
     let a = ship.getAcceleration();

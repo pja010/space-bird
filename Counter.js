@@ -14,6 +14,11 @@ class Counter{
   stopCounting() {
     this.counter.counting = false
   }
+  reset() {
+    this.counter = new Count2(0)
+    this.counter.counting = true
+    this.counter.increasing()
+  }
 }
 
 class Count2{

@@ -1,7 +1,8 @@
 class GasTank {
-  constructor() {
+  constructor(timeCounter) {
     this.counter = new Count(50, 100)
     this.lost = false
+    this.timeCounter = timeCounter
   }
   
   draw(ship, gas, sound=null) {
@@ -25,6 +26,7 @@ class GasTank {
       gas.state = false;
       document.getElementById("lost-screen").style.display = "flex"
       this.lost = true
+      this.timeCounter.stopCounting()
     }
     else if(this.counter.s == 100){
       let txt = text('Gas : FULL' ,10,30);
@@ -58,6 +60,7 @@ class GasTank {
     this.counter = new Count(50, 100)
     this.lost = false
     this.counter.decreasing()
+    this.timeCounter.reset()
   }
   
 }
