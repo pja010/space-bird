@@ -23,11 +23,15 @@ class GasTank {
     if(this.counter.s == 0){
       let txt = text('Gas : EMPTY',10,30);
       gas.state = false;
-      document.getElementById("lost-screen").style.display = "flex"
+      if (!gas.state)
+        document.getElementById("lost-screen").style.display = "flex"
+      
       window.addEventListener("keydown", function() {
-        console.log('vkl')
-        document.getElementById("lost-screen").style.display = "none"
+        document.getElementById("lost-screen").style.display = "none";
+        gas.state = true;
+        this.counter = new Count(50, 100)
       });
+      
     }
     else if(this.counter.s == 100){
       let txt = text('Gas : FULL' ,10,30);
@@ -47,7 +51,7 @@ class GasTank {
       ship.y + ship.height >= gas.y &&
       ship.y <= gas.y + gas.height) {
       
-      this.counter.add(50) //counter.add(x) x = % of gas tank
+      this.counter.add(30) //counter.add(x) x = % of gas tank
       
       sound.play();
     
