@@ -56,15 +56,15 @@ function setup() {
   counter = new Counter();
   gasTank = new GasTank(counter);
   
-  let video = createCapture(VIDEO, videoReady);
+  video = createCapture(VIDEO, videoReady);
   video.hide();
   init();
 }
 
 async function getPoses() {
   poses = await detector.estimatePoses(video.elt);
-  console.log(video);
-  console.log(poses);
+  // console.log(video);
+  // console.log(poses);
   
   // Caculate middle of hip x value
   lx_hip = poses[0].keypoints[11].x
@@ -179,10 +179,9 @@ function draw() {
   
   // GESTURE CONTROL - call draw() in gestures.js
   background(0,0,0,0);
-  translate(this.video.width, 0);
-  let ar = this.video.width/this.video.height
+  translate(video.width, 0);
   scale(-1, 1);
-  image(this.video, 260, 150, 200*ar, 200);
+  image(video, 0, 0);
   if (poses && poses.length > 0) {
     for (let kp of poses[0].keypoints) {
       const { x, y, score } = kp;
