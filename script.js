@@ -38,7 +38,10 @@ function draw() {
   counter.draw();
   gasTank.draw(ship, gas, sound, counter);
   
+  // GESTURE CONTROL - call draw() in gestures.js
+  
   if (keyIsDown(UP_ARROW)) {
+  // if (leftShoulderAngle() > 30 && rightSholderAngle() > 30) {  // GESTURE CONTROL
     let a = ship.getAcceleration();
     starField.addSpeed(a);
     starField2.addSpeed(a/1.5);

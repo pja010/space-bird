@@ -25,8 +25,8 @@ class Ship {
     
     if (this.velocity >= this.topspeed)
       this.velocity = this.topspeed
-    // if (keyIsDown(LEFT_ARROW)) {
-    if (getTurnAngle() < MIN_TURN_ANGLE_LEFT) {  // ALTERNATIVE GESTURE CONTROL
+    if (keyIsDown(LEFT_ARROW)) {
+    // if (getTurnAngle() < MIN_TURN_ANGLE_LEFT) {  // ALTERNATIVE GESTURE CONTROL
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x -= this.velocity;
