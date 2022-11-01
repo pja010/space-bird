@@ -17,19 +17,17 @@ class Ship {
     // Width and height are the img's original width and height
     image(this.img, this.x, this.y, this.width, this.height);
     
-    /* GESTURE INTEGRATION - call functions in gestures.js
-    setup()
-    
-    */
+    setup() // GESTURE INTEGRATION - gestures.js
     
     if (this.velocity >= this.topspeed)
       this.velocity = this.topspeed
     if (keyIsDown(LEFT_ARROW)) {
-    // if ((getA)) {  // alternative gesture control
+    // if (getTurnAngle > ?) {  // ALTERNATIVE GESTURE CONTROL
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x -= this.velocity;
     } else if (keyIsDown(RIGHT_ARROW)) {
+    // else if (getTurnAngle > ?) {  // ALTERNATIVE GESTURE CONTROL
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x += this.velocity;
