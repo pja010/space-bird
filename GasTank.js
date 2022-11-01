@@ -1,6 +1,6 @@
 class GasTank {
   constructor(timeCounter) {
-    this.counter = new Count(50, 100)
+    this.counter = new Count(100, 100)
     this.lost = false
     this.timeCounter = timeCounter
   }
@@ -45,7 +45,7 @@ class GasTank {
       ship.y + ship.height >= gas.y &&
       ship.y <= gas.y + gas.height) {
       
-      this.counter.add(30) //counter.add(x) x = % of gas tank
+      this.counter.add(60) //counter.add(x) x = % of gas tank
       
       sound.play();
     
