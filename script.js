@@ -4,6 +4,7 @@ let ship;
 let gas;
 let gasTank;
 let sound;
+let counter;
 
 function preload(){
     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
@@ -16,12 +17,14 @@ function setup() {
   ship = new Ship(60, windowWidth/2-30, windowHeight-180);
   gas = new Gas(60, windowWidth/2, 0, 5);
   gasTank = new GasTank();
+  counter = new Counter();
 }
 
 // make the start screen goes away when a key is pressed
 window.addEventListener("keydown", function() {
   document.getElementById("start-screen").style.display = "none";
   gasTank.counter.decreasing()
+  counter.counter.increasing()
 }, {once : true});
 
 function draw() {
@@ -31,6 +34,7 @@ function draw() {
   ship.draw();
   gas.draw();
   gasTank.draw(ship, gas, sound);
+  counter.draw();
   
   if (keyIsDown(UP_ARROW)) {
     let a = ship.getAcceleration();
@@ -46,7 +50,6 @@ function draw() {
 
 function mousePressed() {
   if (gasTank.lost) {
-    console.log('vcl')
     document.getElementById("lost-screen").style.display = "none";
     gasTank.resetGame()
     gas.state = true
@@ -54,7 +57,7 @@ function mousePressed() {
 }
 
 /* 
-globals GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
+globals Counter, GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
 BEVEL, BEZIER, BLEND, BLUR, BOLD, BOLDITALIC, BOTTOM, BURN, CENTER, CHORD,
 CLAMP, CLOSE, CONTROL, CORNER, CORNERS, CROSS, CURVE, DARKEST, DEGREES,
 DEG_TO_RAD, DELETE, DIFFERENCE, DILATE, DODGE, DOWN_ARROW, ENTER, ERODE,

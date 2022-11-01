@@ -1,28 +1,33 @@
 class Counter{
   constructor() {
-    this.counter = new Count(0)
-    this.lost = false
+    this.counter = new Count2(0)
   }
   
   draw() {
     let sVal = this.counter.s
-    fill(0,0,0);
+    fill(255,255,255);
     textSize(32);
     textFont('monospace')
-    let txt = text('Time : '+ sVal + 's',10,70);
+    let txt = text('Time : '+ sVal + 's',10,130);
+  }
+  
+  stopCounting() {
+    this.counter.counting = false
   }
 }
 
-class Count{
+class Count2{
   constructor(s){
     this.s = s
+    this.counting = true
   }
   
   increasing() {
-    setInterval(() => {this.increase(),this.s}, 100)
+    setInterval(() => {this.increase(),this.s}, 1000)
   }
   increase(){
-    this.s ++
+    if (this.counting)
+      this.s ++
   }
 }
 
