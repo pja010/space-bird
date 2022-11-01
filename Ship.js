@@ -20,6 +20,7 @@ class Ship {
     if (this.velocity >= this.topspeed)
       this.velocity = this.topspeed
     if (keyIsDown(LEFT_ARROW)) {
+    // if ((LEFT_ARROW)) {  // alternative gesture control
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x -= this.velocity;

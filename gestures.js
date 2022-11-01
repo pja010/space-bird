@@ -38,6 +38,11 @@ async function videoReady() {
   await rightShoulderAngle();
 }
 
+// interface
+function getLeanAngle() {
+  setup()
+}
+
 async function setup() {
   createCanvas(displayWidth, displayHeight);
   video = createCapture(VIDEO, videoReady);
@@ -83,8 +88,8 @@ async function getPoses() {
   
   //print(my_hip);
   //print(body_line);
-  await leftShoulderAngle();
-  await rightShoulderAngle();
+  // await leftShoulderAngle();
+  // await rightShoulderAngle();
   setTimeout(getPoses, 0);
 }
 
@@ -108,8 +113,9 @@ async function rightShoulderAngle(){
   
   let angle = v2.angleBetween(v3);
   let degrees = (angle * 180) / PI;
-  
-  print("right:", degrees);
+
+  // print("right:", degrees);
+  return degrees;
   
 }
 
@@ -134,7 +140,8 @@ async function leftShoulderAngle(){
   
   let angle = v4.angleBetween(v5);
   let degrees = (angle * 180) / PI;
-  print("left:", degrees);
+  // print("left:", degrees);
+  return degrees;
 
 }
 

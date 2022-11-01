@@ -23,6 +23,7 @@ class Angles{
   async videoReady() {
     console.log("video ready");
     await getPoses();
+    await turnAngle();
     await leftShoulderAngle();
     await rightShoulderAngle();
   }
@@ -36,48 +37,55 @@ class Angles{
   }
 
   async getPoses() {
+
+
+    let rx_hip;
+    let ry_hip;
+
+    let lx_hip;
+    let ly_hip;
     poses = await detector.estimatePoses(video.elt);
     console.log(video);
     console.log(poses);
 
-    // Caculate middle of hip x value
+    // hip values
     lx_hip = poses[0].keypoints[11].x
     ly_hip = poses[0].keypoints[11].y
     rx_hip =  poses[0].keypoints[12].x
     ry_hip =  poses[0].keypoints[12].y
+    
+    
+    // Calculate middle of hip y and x value
     mx_hip = (lx_hip + rx_hip)/2; 
-
-
-    // Calculate middle of hip y value
     my_hip = (ly_hip + ry_hip)/2; 
-
-    let hip_origin_v = createVector(mx_hip, my_hip);
-    let nose_v = createVector(nose_x, nose_y);
-    let top_screen_v = createVector(mx_hip, 0);
-
-    v0 =  p5.Vector.sub(top_screen_v, hip_origin_v)
-    v1 =  p5.Vector.sub(nose_v, hip_origin_v)
-
+    
     // Get nose position
     nose_x = poses[0].keypoints[0].x
     nose_y = poses[0].keypoints[0].y 
 
-    // body line length from middle hip to nose
-    //body_line = my_hip - ncos-1 [ (a · b) / (|a| |b|) ]ose_y 
+    setTimeout(getPoses, 0);
+  }
+  
+  async turnAngle(){
+        
+    let hip_origin_v = createVector(mx_hip, my_hip);
+    let nose_v = createVector(nose_x, nose_y);
+    let top_screen_v = createVector(mx_hip, 0);
+
+    let v0 =  p5.Vector.sub(top_screen_v, hip_origin_v)
+    let v1 =  p5.Vector.sub(nose_v, hip_origin_v)
 
     let angle = v0.angleBetween(v1)
     let degrees = (angle * 180/PI)
     // angle is PI/2
     print("hip:", degrees);
 
-    //print(my_hip);
-    //print(body_line);
-    await leftShoulderAngle();
-    await rightShoulderAngle();
-    setTimeout(getPoses, 0);
-  }
 
+  }
   async rightShoulderAngle(){
+
+    let rx_hip;
+    let ry_hip;
 
     let rx_should = poses[0].keypoints[6].x;
     let ry_should = poses[0].keypoints[6].y;
@@ -98,11 +106,14 @@ class Angles{
     let angle = v2.angleBetween(v3);
     let degrees = (angle * 180) / PI;
 
-    print("right:", degrees);
+    return degrees;
 
   }
 
   async leftShoulderAngle(){
+
+    let lx_hip;
+    let ly_hip;
 
     let lx_should = poses[0].keypoints[5].x;
     let ly_should = poses[0].keypoints[5].y;
@@ -123,7 +134,8 @@ class Angles{
 
     let angle = v4.angleBetween(v5);
     let degrees = (angle * 180) / PI;
-    print("left:", degrees);
+    
+    return degrees;
 
   }
 
