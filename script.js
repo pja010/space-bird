@@ -19,7 +19,25 @@ function setup() {
   gas = new Gas(60, windowWidth/2, 0, 5);
   counter = new Counter();
   gasTank = new GasTank(counter);
-  //angles = new Angles();
+  // angles
+  angles = new Angles();
+  let video = createCapture(VIDEO, videoReady);
+  video.hide();
+  angles.setVideo(video);
+  angles.init();
+}
+
+async function videoReady() {
+    console.log("video ready");
+
+    await angles.getPoses();
+    console.log("here 1")
+    await angles.turnAngle();
+    console.log("here 2")
+    await angles.leftShoulderAngle();
+    console.log("here 3")
+    await angles.rightShoulderAngle();
+  
 }
 
 // make the start screen goes away when a key is pressed
@@ -37,7 +55,7 @@ function draw() {
   gas.draw();
   counter.draw();
   gasTank.draw(ship, gas, sound, counter);
-  
+  //angles.draw();
   // GESTURE CONTROL - call draw() in gestures.js
   
   // logic for arrow_key_up and arrow_key_down
