@@ -141,7 +141,7 @@ function preload(){
     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
 }
 
-function setup() {
+async function setup() {
   createCanvas(windowWidth, windowHeight);
   starField = new StarField(8, 1, 4, 2);
   starField2 = new StarField(4, 1, 3, 1);
@@ -149,25 +149,10 @@ function setup() {
   gas = new Gas(60, windowWidth/2, 0, 5);
   counter = new Counter();
   gasTank = new GasTank(counter);
-  // angles
-  angles = new Angles();
+  
   let video = createCapture(VIDEO, videoReady);
   video.hide();
-  angles.setVideo(video);
-  angles.init();
-}
-
-async function videoReady() {
-    console.log("video ready");
-
-    await angles.getPoses();
-    console.log("here 1")
-    // await angles.turnAngle();
-    // console.log("here 2")
-    // await angles.leftShoulderAngle();
-    // console.log("here 3")
-    // await angles.rightShoulderAngle();
-  
+  await init();
 }
 
 // make the start screen goes away when a key is pressed
