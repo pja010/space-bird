@@ -136,9 +136,9 @@ class Angles{
     // Fixes video (flips it)
     background(0,0,0,0);
     translate(this.video.width, 0);
-    let ar = this.vid
+    let ar = this.video.width/this.video.height
     scale(-1, 1);
-    image(this.video, 10, 200, 100, 60);
+    image(this.video, 260, 150, 200*ar, 200);
 
     if (poses && poses.length > 0) {
       for (let kp of poses[0].keypoints) {
