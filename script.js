@@ -55,7 +55,7 @@ function draw() {
   gas.draw();
   counter.draw();
   gasTank.draw(ship, gas, sound, counter);
-  //angles.draw();
+  angles.draw();
   // GESTURE CONTROL - call draw() in gestures.js
   
   // logic for arrow_key_up and arrow_key_down
