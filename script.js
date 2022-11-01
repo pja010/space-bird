@@ -43,7 +43,7 @@ async function init() {
 }
 
 async function videoReady() {
-  console.log("video ready");
+  // console.log("video ready");
   await getPoses();
 }
 
@@ -94,16 +94,16 @@ async function getPoses() {
   let angle = v0.angleBetween(v1)
   let degrees = (angle * 180/PI)
   // angle is PI/2
-  print("hip:", degrees);
+  // print("hip:", degrees);
   
   //print(my_hip);
   //print(body_line);
-  await leftShoulderAngle();
-  await rightShoulderAngle();
+  // await leftShoulderAngle();
+  // await rightShoulderAngle();
   setTimeout(getPoses, 0);
 }
 
-async function rightShoulderAngle(){
+function rightShoulderAngle(){
   
   let rx_should = poses[0].keypoints[6].x;
   let ry_should = poses[0].keypoints[6].y;
@@ -123,12 +123,12 @@ async function rightShoulderAngle(){
   
   let angle = v2.angleBetween(v3);
   let degrees = (angle * 180) / PI;
-  
-  print("right:", degrees);
+  return degrees;
+  // print("right:", degrees);
   
 }
 
-async function leftShoulderAngle(){
+function leftShoulderAngle(){
   
   let lx_should = poses[0].keypoints[5].x;
   let ly_should = poses[0].keypoints[5].y;
@@ -149,8 +149,8 @@ async function leftShoulderAngle(){
   
   let angle = v4.angleBetween(v5);
   let degrees = (angle * 180) / PI;
-  print("left:", degrees);
-
+  // print("left:", degrees);
+  return degrees;
 }
 
 /* MOVENET END
@@ -179,7 +179,7 @@ function draw() {
   
   // GESTURE CONTROL - call draw() in gestures.js
   background(0,0,0,0);
-  translate(video.width, 0);
+  translate(video.width, 200);
   scale(-1, 1);
   image(video, 0, 0);
   if (poses && poses.length > 0) {
@@ -207,8 +207,9 @@ function draw() {
   }
   
   // logic for arrow_key_up and arrow_key_down
-  if (keyIsDown(UP_ARROW)) {
-  // if (leftShoulderAngle() > 30 && rightSholderAngle() > 30) {  // GESTURE CONTROL
+  // if (keyIsDown(UP_ARROW)) {
+  console.log(leftShoulderAngle(), rightShoulderAngle())
+  if (leftShoulderAngle() > 30 && rightShoulderAngle() > 30) {  // GESTURE CONTROL
     let a = ship.getAcceleration();
     starField.addSpeed(a);
     starField2.addSpeed(a/1.5);
