@@ -7,6 +7,136 @@ let sound;
 let counter;
 let angles;
 
+let mx_hip;
+let nose_y;
+let nose_x;
+
+let lx_hip;
+let ly_hip;
+
+let rx_hip;
+let ry_hip;
+let my_hip;
+
+let body_line;
+
+let v0;
+let v1; 
+let v2;
+   
+
+async function init() {
+  const detectorConfig = {
+    modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING,
+  };
+  detector = await poseDetection.createDetector(
+    poseDetection.SupportedModels.MoveNet,
+    detectorConfig
+  );
+}
+
+async function videoReady() {
+  console.log("video ready");
+  await getTurnAngle();
+  await leftShoulderAngle();
+  await rightShoulderAngle();
+}
+
+async function getTurnAngle() {
+  poses = await detector.estimatePoses(video.elt);
+  console.log(video);
+  console.log(poses);
+  
+  // Caculate middle of hip x value
+  lx_hip = poses[0].keypoints[11].x
+  ly_hip = poses[0].keypoints[11].y
+  rx_hip =  poses[0].keypoints[12].x
+  ry_hip =  poses[0].keypoints[12].y
+  mx_hip = (lx_hip + rx_hip)/2; 
+  
+  
+  // Calculate middle of hip y value
+  my_hip = (ly_hip + ry_hip)/2; 
+  
+  let hip_origin_v = createVector(mx_hip, my_hip);
+  let nose_v = createVector(nose_x, nose_y);
+  let top_screen_v = createVector(mx_hip, 0);
+  
+  v0 =  p5.Vector.sub(top_screen_v, hip_origin_v)
+  v1 =  p5.Vector.sub(nose_v, hip_origin_v)
+  
+  // Get nose position
+  nose_x = poses[0].keypoints[0].x
+  nose_y = poses[0].keypoints[0].y 
+  
+  // body line length from middle hip to nose
+  //body_line = my_hip - ncos-1 [ (a · b) / (|a| |b|) ]ose_y 
+  
+  let angle = v0.angleBetween(v1)
+  let degrees = (angle * 180/PI)
+  // angle is PI/2
+  // print("hip:", degrees);
+  
+  //print(my_hip);
+  //print(body_line);
+  // await leftShoulderAngle();
+  // await rightShoulderAngle();
+  setTimeout(getTurnAngle, 0);
+  return degrees;
+}
+
+async function rightShoulderAngle(){
+  
+  let rx_should = poses[0].keypoints[6].x;
+  let ry_should = poses[0].keypoints[6].y;
+  
+  rx_hip =  poses[0].keypoints[12].x
+  ry_hip =  poses[0].keypoints[12].y
+  
+  let rx_elb =  poses[0].keypoints[8].x
+  let ry_elb =  poses[0].keypoints[8].y
+  
+  let r_elb_origin_v = createVector(rx_should, ry_should);
+  let r_elb_v = createVector(rx_elb, ry_elb);
+  let r_hip_v = createVector(rx_hip, ry_hip);
+ 
+  let v2 =  p5.Vector.sub(r_elb_v, r_elb_origin_v);
+  let v3 =  p5.Vector.sub(r_hip_v, r_elb_origin_v);
+  
+  let angle = v2.angleBetween(v3);
+  let degrees = (angle * 180) / PI;
+
+  // print("right:", degrees);
+  return degrees;
+  
+}
+
+async function leftShoulderAngle(){
+  
+  let lx_should = poses[0].keypoints[5].x;
+  let ly_should = poses[0].keypoints[5].y;
+  
+  lx_hip = poses[0].keypoints[11].x;
+  ly_hip = poses[0].keypoints[11].y;
+  
+  let lx_elb =  poses[0].keypoints[7].x;
+  let ly_elb =  poses[0].keypoints[7].y;
+  
+  let l_elb_origin_v = createVector(lx_should, ly_should);
+  let l_elb_v = createVector(lx_elb, ly_elb); // incorrect - gives 0
+  let l_hip_v = createVector(lx_hip, ly_hip);
+  
+  
+  let v4 =  p5.Vector.sub(l_elb_v, l_elb_origin_v);
+  let v5 =  p5.Vector.sub(l_hip_v, l_elb_origin_v);
+  
+  let angle = v4.angleBetween(v5);
+  let degrees = (angle * 180) / PI;
+  // print("left:", degrees);
+  return degrees;
+
+}
+
 function preload(){
     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
 }
