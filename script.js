@@ -5,7 +5,14 @@ let gas;
 let gasTank;
 let sound;
 let counter;
-let angles;
+
+/* MOVENET START
+*/
+
+let detector;
+let poses;
+let video;
+
 
 let mx_hip;
 let nose_y;
@@ -37,12 +44,24 @@ async function init() {
 
 async function videoReady() {
   console.log("video ready");
-  await getTurnAngle();
-  await leftShoulderAngle();
-  await rightShoulderAngle();
+  await getPoses();
 }
 
-async function getTurnAngle() {
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  starField = new StarField(8, 1, 4, 2);
+  starField2 = new StarField(4, 1, 3, 1);
+  ship = new Ship(60, windowWidth/2-30, windowHeight-180);
+  gas = new Gas(60, windowWidth/2, 0, 5);
+  counter = new Counter();
+  gasTank = new GasTank(counter);
+  
+  let video = createCapture(VIDEO, videoReady);
+  video.hide();
+  init();
+}
+
+async function getPoses() {
   poses = await detector.estimatePoses(video.elt);
   console.log(video);
   console.log(poses);
@@ -75,14 +94,13 @@ async function getTurnAngle() {
   let angle = v0.angleBetween(v1)
   let degrees = (angle * 180/PI)
   // angle is PI/2
-  // print("hip:", degrees);
+  print("hip:", degrees);
   
   //print(my_hip);
   //print(body_line);
-  // await leftShoulderAngle();
-  // await rightShoulderAngle();
-  setTimeout(getTurnAngle, 0);
-  return degrees;
+  await leftShoulderAngle();
+  await rightShoulderAngle();
+  setTimeout(getPoses, 0);
 }
 
 async function rightShoulderAngle(){
@@ -105,9 +123,8 @@ async function rightShoulderAngle(){
   
   let angle = v2.angleBetween(v3);
   let degrees = (angle * 180) / PI;
-
-  // print("right:", degrees);
-  return degrees;
+  
+  print("right:", degrees);
   
 }
 
@@ -132,27 +149,16 @@ async function leftShoulderAngle(){
   
   let angle = v4.angleBetween(v5);
   let degrees = (angle * 180) / PI;
-  // print("left:", degrees);
-  return degrees;
+  print("left:", degrees);
 
 }
+
+/* MOVENET END
+*/
+
 
 function preload(){
     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
-}
-
-async function setup() {
-  createCanvas(windowWidth, windowHeight);
-  starField = new StarField(8, 1, 4, 2);
-  starField2 = new StarField(4, 1, 3, 1);
-  ship = new Ship(60, windowWidth/2-30, windowHeight-180);
-  gas = new Gas(60, windowWidth/2, 0, 5);
-  counter = new Counter();
-  gasTank = new GasTank(counter);
-  
-  let video = createCapture(VIDEO, videoReady);
-  video.hide();
-  await init();
 }
 
 // make the start screen goes away when a key is pressed
@@ -170,8 +176,36 @@ function draw() {
   gas.draw();
   counter.draw();
   gasTank.draw(ship, gas, sound, counter);
-  angles.draw();
+  
   // GESTURE CONTROL - call draw() in gestures.js
+  background(0,0,0,0);
+  translate(this.video.width, 0);
+  let ar = this.video.width/this.video.height
+  scale(-1, 1);
+  image(this.video, 260, 150, 200*ar, 200);
+  if (poses && poses.length > 0) {
+    for (let kp of poses[0].keypoints) {
+      const { x, y, score } = kp;
+      if (score > 0.4) {
+        
+        // Draws body_line
+        stroke(255, 204, 0);
+        strokeWeight(4);
+        line(mx_hip, my_hip, mx_hip, 0)
+        
+        // Draws body_line
+        stroke(255, 0, 0);
+        strokeWeight(4);
+        line(mx_hip, my_hip, nose_x, nose_y)
+        
+        // Draws dots on person 
+        fill(255);
+        stroke(0);
+        strokeWeight(4);
+        circle(x, y, 16);
+      }
+    }
+  }
   
   // logic for arrow_key_up and arrow_key_down
   if (keyIsDown(UP_ARROW)) {
