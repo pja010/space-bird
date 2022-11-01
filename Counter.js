@@ -1,28 +1,28 @@
 class Counter{
+  constructor() {
+    this.counter = new Count(0)
+    this.lost = false
+  }
   
+  draw() {
+    let sVal = this.counter.s
+    fill(0,0,0);
+    textSize(32);
+    textFont('monospace')
+    let txt = text('Time : '+ sVal + 's',10,70);
+  }
 }
 
 class Count{
-  constructor(s,f){
+  constructor(s){
     this.s = s
-    this.f = f
   }
   
-  decreasing() {
-    if (!this.done) {
-      setInterval(() => {this.decrease(),this.s}, 100)
-    }
+  increasing() {
+    setInterval(() => {this.increase(),this.s}, 100)
   }
-  decrease(){
-    if(this.s > 0){
-      this.s --
-      // this.p.html(this.s) //acted like console.log()
-    }
-  }
-  
-  add(litter) {
-    this.s += litter
-    // this.p.html(this.s)
+  increase(){
+    this.s ++
   }
 }
 

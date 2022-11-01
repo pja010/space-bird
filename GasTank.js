@@ -69,9 +69,7 @@ class Count{
   }
   
   decreasing() {
-    if (!this.done) {
-      setInterval(() => {this.decrease(),this.s}, 100)
-    }
+    setInterval(() => {this.decrease(),this.s}, 100)
   }
   decrease(){
     if(this.s > 0){

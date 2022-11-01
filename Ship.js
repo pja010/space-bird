@@ -10,13 +10,15 @@ class Ship {
     this.y = y;
     this.velocity = 0;
     this.acceleration = 0.4;
-    this.topspeed = 10;
+    this.topspeed = 20;
   }
   draw() {
     // Top-left corner of the img is at (0, 0)
     // Width and height are the img's original width and height
     image(this.img, this.x, this.y, this.width, this.height);
-
+    
+    if (this.velocity >= this.topspeed)
+      this.velocity = this.topspeed
     if (keyIsDown(LEFT_ARROW)) {
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
