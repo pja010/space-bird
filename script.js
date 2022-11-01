@@ -45,7 +45,12 @@ function draw() {
 }
 
 function mousePressed() {
-  
+  if (gasTank.lost) {
+    console.log('vcl')
+    document.getElementById("lost-screen").style.display = "none";
+    gasTank.resetGame()
+    gas.state = true
+  }
 }
 
 /* 

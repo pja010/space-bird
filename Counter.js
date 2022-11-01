@@ -1,64 +1,4 @@
-class GasTank {
-  constructor() {
-    this.counter = new Count(50, 100)
-    this.lost = false
-  }
-  
-  draw(ship, gas, sound=null) {
-    let sVal = this.counter.s;
-    let Progress = map(sVal,0,100,0,width-20);
-    
-    if(this.counter.s > 20){
-      fill(0,200,200);
-      stroke(0,100,100);
-    } 
-    else {
-      fill(200, 0, 0);
-      stroke(200,0,0);
-    }
-    
-    textSize(32);
-    textFont('monospace')
-    
-    if(this.counter.s == 0){
-      let txt = text('Gas : EMPTY',10,30);
-      gas.state = false;
-      document.getElementById("lost-screen").style.display = "flex"
-      this.lost = true
-    }
-    else if(this.counter.s == 100){
-      let txt = text('Gas : FULL' ,10,30);
-    }
-    else{
-      let txt = text('Gas : '+ sVal + '%',10,30);
-    }
-    
-    rect(10,40,Progress,20,15)
-    noFill();
-    rect(10,40,width-20,20,15)
-    
-
-    if(ship.x + ship.width >= gas.x &&
-      ship.x <= gas.x + gas.width &&
-      ship.y + ship.height >= gas.y &&
-      ship.y <= gas.y + gas.height) {
-      
-      this.counter.add(30) //counter.add(x) x = % of gas tank
-      
-      sound.play();
-    
-      
-      gas.reset();
-      if (this.counter.s > this.counter.f)
-        this.counter.s = this.counter.f
-    }
-  }
-  
-  resetGame() {
-    this.counter = new Count(50, 100)
-    this.lost = false
-    this.counter.decreasing()
-  }
+class Counter{
   
 }
 
@@ -88,7 +28,7 @@ class Count{
 
 /* 
 
-globals GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
+globals Counter, GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
 BEVEL, BEZIER, BLEND, BLUR, BOLD, BOLDITALIC, BOTTOM, BURN, CENTER, CHORD,
 CLAMP, CLOSE, CONTROL, CORNER, CORNERS, CROSS, CURVE, DARKEST, DEGREES,
 DEG_TO_RAD, DELETE, DIFFERENCE, DILATE, DODGE, DOWN_ARROW, ENTER, ERODE,
