@@ -9,7 +9,7 @@ class Ship {
     this.x = x;
     this.y = y;
     this.velocity = 0;
-    this.acceleration = 0.4;
+    this.acceleration = 1;
     this.topspeed = 20;
     this.turn = 0;
   }
@@ -20,8 +20,8 @@ class Ship {
     
     // GESTURE INTEGRATION - gestures.js
     // setup();
-    const MIN_TURN_ANGLE_RIGHT = -10;
-    const MIN_TURN_ANGLE_LEFT = 10;
+    const MIN_TURN_ANGLE_RIGHT = -5;
+    const MIN_TURN_ANGLE_LEFT = 5;
     //
     
     if (this.velocity >= this.topspeed)

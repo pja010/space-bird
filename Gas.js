@@ -20,6 +20,9 @@ class Gas {
         this.reset();
       }
     }
+    if (this.speed >= 20) {
+      this.speed = 20
+    }
   }
 
   reset(x = getRandomInt(this.width, windowWidth - this.width), y = 1) {

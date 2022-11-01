@@ -48,8 +48,6 @@ async function videoReady() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  starField = new StarField(8, 1, 4, 2);
-  starField2 = new StarField(4, 1, 3, 1);
   ship = new Ship(60, windowWidth/2-30, windowHeight-180);
   gas = new Gas(60, windowWidth/2, 0, 5);
   counter = new Counter();
@@ -58,6 +56,8 @@ function setup() {
   video = createCapture(VIDEO, videoReady);
   video.hide();
   init();
+  starField = new StarField(8, 1, 4, 2);
+  starField2 = new StarField(4, 1, 3, 1);
 }
 async function getPoses() {
   poses = await detector.estimatePoses(video.elt);
@@ -176,9 +176,9 @@ function draw() {
   gasTank.draw(ship, gas, sound, counter);
   
   // GESTURE CONTROL - call draw() in gestures.js
-  // background(0,0,0,0);
-  // translate(video.width, 200);
-  // scale(-1, 1);
+  // background(255,255,255,0);
+  translate(video.width, 0);
+  scale(-1, 1);
   // image(video, 0, 0);
   if (poses && poses.length > 0) {
     for (let kp of poses[0].keypoints) {
@@ -203,6 +203,9 @@ function draw() {
       }
     }
   }
+  
+  starField2.draw();
+  starField.draw();
 //   const availableColors = [
 //     color(255, 247, 222),
 //     color(230, 255, 253),
