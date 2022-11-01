@@ -5,12 +5,6 @@ let gas;
 let gasTank;
 let sound;
 
-// make the start screen goes away when a key is pressed
-window.addEventListener("keydown", function() {
-  document.getElementById("start-screen").style.display = "none";
-}, {once : true});
-
-
 function preload(){
     sound = loadSound('https://cdn.glitch.global/83be1388-3079-4574-ba81-66b534fdda15/mario-coin-sound.mp3?v=1667239226171');
 }
@@ -23,6 +17,12 @@ function setup() {
   gas = new Gas(60, windowWidth/2, 0, 5);
   gasTank = new GasTank();
 }
+
+// make the start screen goes away when a key is pressed
+window.addEventListener("keydown", function() {
+  document.getElementById("start-screen").style.display = "none";
+  gasTank.counter.decreasing()
+}, {once : true});
 
 function draw() {
   background(0);

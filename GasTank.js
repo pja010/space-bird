@@ -1,8 +1,6 @@
 class GasTank {
   constructor() {
     this.counter = new Count(50, 100)
-    this.counter.decreasing()
-    this.lost = false
   }
   
   draw(ship, gas, sound=null) {
@@ -21,21 +19,13 @@ class GasTank {
     textSize(32);
     textFont('monospace')
     
-    if (this.lost) {
-      window.addEventListener("keydown", function() {
-        document.getElementById("lost-screen").style.display = "none";
-        this.lost = false
-      });
-      gas.state = true;
-      this.counter = new Count(50, 100)
-      this.counter.decreasing()
-    }
-    
     if(this.counter.s == 0){
       let txt = text('Gas : EMPTY',10,30);
       gas.state = false;
       document.getElementById("lost-screen").style.display = "flex"
-      this.lost = true
+      if (keyIsDown(ENTER)) {
+        document.getElementById("lost-screen").style.display = "none"
+      }
     }
     else if(this.counter.s == 100){
       let txt = text('Gas : FULL' ,10,30);
