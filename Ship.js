@@ -11,6 +11,7 @@ class Ship {
     this.velocity = 0;
     this.acceleration = 0.4;
     this.topspeed = 20;
+    this.turn = 0;
   }
   draw() {
     // Top-left corner of the img is at (0, 0)
@@ -19,19 +20,21 @@ class Ship {
     
     // GESTURE INTEGRATION - gestures.js
     // setup();
-    // const MIN_TURN_ANGLE_RIGHT = 10;
-    // const MIN_TURN_ANGLE_LEFT = -10;
+    const MIN_TURN_ANGLE_RIGHT = -10;
+    const MIN_TURN_ANGLE_LEFT = 10;
     //
     
     if (this.velocity >= this.topspeed)
       this.velocity = this.topspeed
-    if (keyIsDown(LEFT_ARROW)) {
-    // if (getTurnAngle() < MIN_TURN_ANGLE_LEFT) {  // ALTERNATIVE GESTURE CONTROL
+    
+    // if (keyIsDown(LEFT_ARROW)) {
+    if (this.turn > MIN_TURN_ANGLE_LEFT) {  // ALTERNATIVE GESTURE CONTROL
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x -= this.velocity;
-    } else if (keyIsDown(RIGHT_ARROW)) {
-    // else if (getTurnAngle > MIN_TURN_ANGLE_RIGHT) {  // ALTERNATIVE GESTURE CONTROL
+    }
+    // } else if (keyIsDown(RIGHT_ARROW)) {
+    else if (this.turn < MIN_TURN_ANGLE_RIGHT) {  // ALTERNATIVE GESTURE CONTROL
       this.velocity += this.acceleration;
       // this.velocity.limit(this.topspeed);
       this.x += this.velocity;
@@ -49,6 +52,9 @@ class Ship {
   }
   getAcceleration() {
     return this.acceleration;
+  }
+  setTurn(a) {
+    this.turn = a
   }
 }
 

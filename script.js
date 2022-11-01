@@ -5,6 +5,7 @@ let gas;
 let gasTank;
 let sound;
 let counter;
+let turn;
 
 /* MOVENET START
 */
@@ -25,11 +26,9 @@ let rx_hip;
 let ry_hip;
 let my_hip;
 
-let body_line;
+let degrees1;
+let degrees2;
 
-let v0;
-let v1; 
-let v2;
    
 
 async function init() {
@@ -60,7 +59,6 @@ function setup() {
   video.hide();
   init();
 }
-
 async function getPoses() {
   poses = await detector.estimatePoses(video.elt);
   // console.log(video);
@@ -81,8 +79,8 @@ async function getPoses() {
   let nose_v = createVector(nose_x, nose_y);
   let top_screen_v = createVector(mx_hip, 0);
   
-  v0 =  p5.Vector.sub(top_screen_v, hip_origin_v)
-  v1 =  p5.Vector.sub(nose_v, hip_origin_v)
+  let v0 =  p5.Vector.sub(top_screen_v, hip_origin_v)
+  let v1 =  p5.Vector.sub(nose_v, hip_origin_v)
   
   // Get nose position
   nose_x = poses[0].keypoints[0].x
@@ -92,18 +90,20 @@ async function getPoses() {
   //body_line = my_hip - ncos-1 [ (a · b) / (|a| |b|) ]ose_y 
   
   let angle = v0.angleBetween(v1)
-  let degrees = (angle * 180/PI)
+  turn = (angle * 180/PI)
+  ship.setTurn(turn);
+  // console.log(turn);
   // angle is PI/2
   // print("hip:", degrees);
   
   //print(my_hip);
   //print(body_line);
-  // await leftShoulderAngle();
-  // await rightShoulderAngle();
+  await leftShoulderAngle();
+  await rightShoulderAngle();
   setTimeout(getPoses, 0);
 }
 
-function rightShoulderAngle(){
+async function rightShoulderAngle(){
   
   let rx_should = poses[0].keypoints[6].x;
   let ry_should = poses[0].keypoints[6].y;
@@ -122,13 +122,13 @@ function rightShoulderAngle(){
   let v3 =  p5.Vector.sub(r_hip_v, r_elb_origin_v);
   
   let angle = v2.angleBetween(v3);
-  let degrees = (angle * 180) / PI;
-  return degrees;
+  degrees1 = (angle * 180) / PI;
+  
   // print("right:", degrees);
   
 }
 
-function leftShoulderAngle(){
+async function leftShoulderAngle(){
   
   let lx_should = poses[0].keypoints[5].x;
   let ly_should = poses[0].keypoints[5].y;
@@ -148,9 +148,9 @@ function leftShoulderAngle(){
   let v5 =  p5.Vector.sub(l_hip_v, l_elb_origin_v);
   
   let angle = v4.angleBetween(v5);
-  let degrees = (angle * 180) / PI;
+  degrees2 = (angle * 180) / PI;
   // print("left:", degrees);
-  return degrees;
+  
 }
 
 /* MOVENET END
@@ -170,18 +170,16 @@ window.addEventListener("keydown", function() {
 
 function draw() {
   background(0);
-  starField2.draw();
-  starField.draw();
   ship.draw();
   gas.draw();
   counter.draw();
   gasTank.draw(ship, gas, sound, counter);
   
   // GESTURE CONTROL - call draw() in gestures.js
-  background(0,0,0,0);
-  translate(video.width, 200);
-  scale(-1, 1);
-  image(video, 0, 0);
+  // background(0,0,0,0);
+  // translate(video.width, 200);
+  // scale(-1, 1);
+  // image(video, 0, 0);
   if (poses && poses.length > 0) {
     for (let kp of poses[0].keypoints) {
       const { x, y, score } = kp;
@@ -205,11 +203,22 @@ function draw() {
       }
     }
   }
+//   const availableColors = [
+//     color(255, 247, 222),
+//     color(230, 255, 253),
+//     color(255, 255, 250),
+//   ];
+//   const randomIndex = Math.floor(Math.random() * availableColors.length);
+
+//   let fillColor = availableColors[randomIndex];
+//   fill(fillColor)
   
   // logic for arrow_key_up and arrow_key_down
   // if (keyIsDown(UP_ARROW)) {
-  console.log(leftShoulderAngle(), rightShoulderAngle())
-  if (leftShoulderAngle() > 30 && rightShoulderAngle() > 30) {  // GESTURE CONTROL
+  // let lef = leftShoulderAngle().then(result => result.data)
+  // console.log(degrees1, degrees2)
+  if (degrees2 > 30 && degrees1 < -30) {  // GESTURE CONTROL
+    console.log("sdfsd")
     let a = ship.getAcceleration();
     starField.addSpeed(a);
     starField2.addSpeed(a/1.5);
@@ -219,6 +228,7 @@ function draw() {
     starField2.resetSpeed();
     gas.resetSpeed();
   }
+  
 }
 
 // restart the game upon a mouseclick
