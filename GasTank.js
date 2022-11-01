@@ -57,7 +57,7 @@ class GasTank {
   }
   
   resetGame() {
-    this.counter = new Count(50, 100)
+    this.counter = new Count(100, 100)
     this.lost = false
     this.counter.decreasing()
     this.timeCounter.reset()
