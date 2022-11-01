@@ -40,6 +40,7 @@ function draw() {
   
   // GESTURE CONTROL - call draw() in gestures.js
   
+  // logic for arrow_key_up and arrow_key_down
   if (keyIsDown(UP_ARROW)) {
   // if (leftShoulderAngle() > 30 && rightSholderAngle() > 30) {  // GESTURE CONTROL
     let a = ship.getAcceleration();
@@ -53,6 +54,7 @@ function draw() {
   }
 }
 
+// restart the game upon a mouseclick
 function mousePressed() {
   if (gasTank.lost) {
     document.getElementById("lost-screen").style.display = "none";
@@ -62,7 +64,7 @@ function mousePressed() {
 }
 
 /* 
-globals Counter, GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
+globals Angles, Counter, GasTank, StarField, Gas, Ship, ADD, ALT, ARROW, AUDIO, AUTO, AXES, BACKSPACE, BASELINE,
 BEVEL, BEZIER, BLEND, BLUR, BOLD, BOLDITALIC, BOTTOM, BURN, CENTER, CHORD,
 CLAMP, CLOSE, CONTROL, CORNER, CORNERS, CROSS, CURVE, DARKEST, DEGREES,
 DEG_TO_RAD, DELETE, DIFFERENCE, DILATE, DODGE, DOWN_ARROW, ENTER, ERODE,
