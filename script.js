@@ -32,11 +32,11 @@ async function videoReady() {
 
     await angles.getPoses();
     console.log("here 1")
-    await angles.turnAngle();
-    console.log("here 2")
-    await angles.leftShoulderAngle();
-    console.log("here 3")
-    await angles.rightShoulderAngle();
+    // await angles.turnAngle();
+    // console.log("here 2")
+    // await angles.leftShoulderAngle();
+    // console.log("here 3")
+    // await angles.rightShoulderAngle();
   
 }
 
