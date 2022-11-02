@@ -175,6 +175,10 @@ function draw() {
   counter.draw();
   gasTank.draw(ship, gas, sound, counter);
   
+  
+  starField2.draw();
+  starField.draw();
+  
   // GESTURE CONTROL - call draw() in gestures.js
   // background(255,255,255,0);
   translate(video.width, 0);
@@ -204,8 +208,8 @@ function draw() {
     }
   }
   
-  starField2.draw();
-  starField.draw();
+  // starField2.draw();
+  // starField.draw();
 //   const availableColors = [
 //     color(255, 247, 222),
 //     color(230, 255, 253),
