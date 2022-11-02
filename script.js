@@ -178,9 +178,17 @@ function draw() {
   
   starField2.draw();
   starField.draw();
+//     const availableColors = [
+//     color(255, 247, 222),
+//     color(230, 255, 253),
+//     color(255, 255, 250),
+//   ];
+//   const randomIndex = Math.floor(Math.random() * availableColors.length);
+
+//   let fillColor = availableColors[randomIndex];
+//   fill(fillColor)
   
-  // GESTURE CONTROL - call draw() in gestures.js
-  // background(255,255,255,0);
+  // GESTURE CONTROL
   translate(video.width, 0);
   scale(-1, 1);
   // image(video, 0, 0);
@@ -208,8 +216,6 @@ function draw() {
     }
   }
   
-  // starField2.draw();
-  // starField.draw();
 //   const availableColors = [
 //     color(255, 247, 222),
 //     color(230, 255, 253),
