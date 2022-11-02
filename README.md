@@ -1,3 +1,8 @@
 # Star Wings
 A gesture-controlled space-travel game.
-https://star-wings.glitch.me
+Uses the webcam to track the player's motions and maps them to the spaceship controls.
+
+Play online at: https://star-wings.glitch.me
+
+Creators:
+Per Astrom, Hunter Lebow, Cuong Nguyen, Jules Ward.
