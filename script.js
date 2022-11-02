@@ -14,7 +14,6 @@ let detector;
 let poses;
 let video;
 
-
 let mx_hip;
 let nose_y;
 let nose_x;
@@ -61,8 +60,6 @@ function setup() {
 }
 async function getPoses() {
   poses = await detector.estimatePoses(video.elt);
-  // console.log(video);
-  // console.log(poses);
   
   // Caculate middle of hip x value
   lx_hip = poses[0].keypoints[11].x
@@ -86,18 +83,12 @@ async function getPoses() {
   nose_x = poses[0].keypoints[0].x
   nose_y = poses[0].keypoints[0].y 
   
-  // body line length from middle hip to nose
-  //body_line = my_hip - ncos-1 [ (a · b) / (|a| |b|) ]ose_y 
-  
   let angle = v0.angleBetween(v1)
   turn = (angle * 180/PI)
   ship.setTurn(turn);
-  // console.log(turn);
-  // angle is PI/2
+
   // print("hip:", degrees);
-  
-  //print(my_hip);
-  //print(body_line);
+
   await leftShoulderAngle();
   await rightShoulderAngle();
   setTimeout(getPoses, 0);
@@ -175,18 +166,8 @@ function draw() {
   counter.draw();
   gasTank.draw(ship, gas, sound, counter);
   
-  
   starField2.draw();
   starField.draw();
-//     const availableColors = [
-//     color(255, 247, 222),
-//     color(230, 255, 253),
-//     color(255, 255, 250),
-//   ];
-//   const randomIndex = Math.floor(Math.random() * availableColors.length);
-
-//   let fillColor = availableColors[randomIndex];
-//   fill(fillColor)
   
   // GESTURE CONTROL
   translate(video.width, 0);
@@ -216,22 +197,10 @@ function draw() {
     }
   }
   
-//   const availableColors = [
-//     color(255, 247, 222),
-//     color(230, 255, 253),
-//     color(255, 255, 250),
-//   ];
-//   const randomIndex = Math.floor(Math.random() * availableColors.length);
-
-//   let fillColor = availableColors[randomIndex];
-//   fill(fillColor)
-  
   // logic for arrow_key_up and arrow_key_down
   // if (keyIsDown(UP_ARROW)) {
   // let lef = leftShoulderAngle().then(result => result.data)
-  // console.log(degrees1, degrees2)
   if (degrees2 > 30 && degrees1 < -30) {  // GESTURE CONTROL
-    console.log("sdfsd")
     let a = ship.getAcceleration();
     starField.addSpeed(a);
     starField2.addSpeed(a/1.5);
