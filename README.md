@@ -4,7 +4,7 @@ Uses the webcam to track the player's motions and maps them to the spaceship con
 
 Play online at: https://ufly.glitch.me/
 
-Read medium article: https://medium.com/@ckn006/u-fly-creating-a-gesture-controlled-spaceship-game-with-p5js-82b1b9e3c10b
+Read medium article about the development process: https://medium.com/@ckn006/u-fly-creating-a-gesture-controlled-spaceship-game-with-p5js-82b1b9e3c10b
 
 Creators:
 Per Astrom, Hunter Lebow, Cuong Nguyen, Jules Ward.
